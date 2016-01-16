@@ -9,7 +9,7 @@ defaultTasks 'run'
 
 version = '0.1'
 
-mainClassName = 'net.thauvin.erik.annotpoctest.Example'
+mainClassName = 'net.thauvin.erik.annotproctest.Example'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 repositories {
@@ -19,11 +19,15 @@ repositories {
 }
 
 dependencies {
-	//compile "com.beust:version-processor:0.2"
+	compile "com.beust:version-processor:0.2"
 }
 
 
 annotationProcessor {
 	library "com.beust:version-processor:0.2"
 	processor "com.beust.version.VersionProcessor"
+}
+
+compileJava {
+	options.compilerArgs << '-proc:none'
 }
